@@ -18,7 +18,6 @@ class List {
     return -1;
   }
 
-  //remove (element) - Removes element from list
   /*The remove() function uses the position returned by find() to splice the dataStore array at that place.
    After the array is modified, listSize is decremented by 1 to reflect the new size of the list.
    The function returns true if an element is removed, and false otherwise.*/
@@ -32,6 +31,16 @@ class List {
     }
 
     return false;
+  }
+
+  //length() function returns the number of elements in a list
+  length() {
+    return this.listSize;
+  }
+
+  //toString() function returns string representation of list
+  toString() {
+    return this.dataStore.toString();
   }
 }
 
