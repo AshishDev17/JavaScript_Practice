@@ -57,6 +57,13 @@ class List {
 
     return false;
   }
+
+  // clear() function clears all elements from list
+  clear() {
+    delete this.dataStore;
+    this.dataStore = [];
+    this.listSize = 0;
+  }
 }
 
 const list = new List();
