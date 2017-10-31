@@ -42,6 +42,21 @@ class List {
   toString() {
     return this.dataStore.toString();
   }
+
+  /* An insertion function needs to know where to insert an element, insertion occurs after a specified element already in the list.
+  Insert function accepts two arguments, first argument is the element to insert and second argument is the element after that we
+  insert the new element */
+  insert(element, after) {
+    const insertAt = find(after);
+
+    if (insertAt >= 0){
+      this.dataStore.splice(insertAt, 0, element);
+      ++this.listSize;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 const list = new List();
