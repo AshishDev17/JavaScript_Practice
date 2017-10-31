@@ -37,7 +37,4 @@ class List {
 
 const list = new List();
 
-
-
-
 console.log('list ', list);
