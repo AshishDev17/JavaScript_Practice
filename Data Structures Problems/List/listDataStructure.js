@@ -85,17 +85,34 @@ class List {
   end() {
     this.pos = this.listSize - 1;
   }
+
   //prev() function moves current position back one element
+  prev() {
+    if (this.pos > 0){
+      --this.pos;
+    }
+  }
 
   //next() function moves current position forward one element
+  next() {
+    if (this.pos < this.listSize - 1){
+      ++this.pos;
+    }
+  }
 
   //currPos() function returns the current position in list
+  currPos() {
+    return this.pos;
+  }
 
   //moveTo(position) function moves the current position to specified position
+  moveTo(position) {
+    this.pos = position;
+  }
 
   //getElement() function returns element at current position
+  getElement() {
+    return this.dataStore[this.pos];
+  }
 }
 
-const list = new List();
-
-console.log('list ', list);
