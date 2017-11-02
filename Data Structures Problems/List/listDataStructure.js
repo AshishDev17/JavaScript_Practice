@@ -64,6 +64,29 @@ class List {
     this.dataStore = [];
     this.listSize = 0;
   }
+
+  // contains() function checks if a particular value is part of the list or not
+  contains(element) {
+    const foundAt = find(element);
+
+    if (foundAt >= 0) return true;
+
+    return false;
+  }
+
+//front() function sets current position to first element of list
+
+//end() function sets current position to last element of list
+
+//prev() function moves current position back one element
+
+//next() function moves current position forward one element
+
+//currPos() function returns the current position in list
+
+//moveTo(position) function moves the current position to specified position
+
+//getElement() function returns element at current position
 }
 
 const list = new List();
