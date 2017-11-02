@@ -1,6 +1,7 @@
 class List {
   constructor() {
     this.listSize = 0;
+    this.pos = 0;
     this.dataStore = [];
   }
 
@@ -63,6 +64,7 @@ class List {
     delete this.dataStore;
     this.dataStore = [];
     this.listSize = 0;
+    this.pos = 0;
   }
 
   // contains() function checks if a particular value is part of the list or not
@@ -74,19 +76,24 @@ class List {
     return false;
   }
 
-//front() function sets current position to first element of list
+  //front() function sets current position to first element of list
+  front() {
+    this.pos = 0;
+  }
 
-//end() function sets current position to last element of list
+  //end() function sets current position to last element of list
+  end() {
+    this.pos = this.listSize - 1;
+  }
+  //prev() function moves current position back one element
 
-//prev() function moves current position back one element
+  //next() function moves current position forward one element
 
-//next() function moves current position forward one element
+  //currPos() function returns the current position in list
 
-//currPos() function returns the current position in list
+  //moveTo(position) function moves the current position to specified position
 
-//moveTo(position) function moves the current position to specified position
-
-//getElement() function returns element at current position
+  //getElement() function returns element at current position
 }
 
 const list = new List();
