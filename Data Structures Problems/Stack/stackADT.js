@@ -29,4 +29,14 @@ class Stack {
   length() {
     return this.top;
   }
+
+  //toString() function returns string representation of list
+  toString() {
+    return this.dataStore.toString();
+  }
+
+  //isEmpty() function checks whether the stack is empty or not
+  isEmpty() {
+    return this.top === 0;
+  }
 }
