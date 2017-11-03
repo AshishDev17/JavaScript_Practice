@@ -40,3 +40,27 @@ class Stack {
     return this.top === 0;
   }
 }
+
+
+//application of stack that converts from base 10 to any base
+
+const baseConverter = (number, base) =>{
+  let convertedStr = '';
+  const digits = '0123456789ABCDEF';
+  const stack = new Stack();
+
+  while (number > 0){
+    stack.push(Math.floor(number % base));
+    number = Math.floor(number / base);
+  }
+
+  while (stack.length() > 0){
+    convertedStr += digits[stack.pop()];
+  }
+
+  return convertedStr;
+};
+
+console.log('baseConverter(100345, 2) = ', baseConverter(100345, 2));
+console.log('baseConverter(100345, 8) = ', baseConverter(100345, 8));
+console.log('baseConverter(100345, 16) = ', baseConverter(100345, 16));
