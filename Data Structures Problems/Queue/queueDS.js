@@ -12,6 +12,7 @@ class Queue {
 
   //dequeue() function removes an element from the front of a queue
   dequeue() {
+    this.dataStore.shift();
     return this.dataStore[this.head++];
   }
 
@@ -19,14 +20,20 @@ class Queue {
   front() {
     return this.dataStore[this.head];
   }
+
+
   //back() function returns the back element of the queue
   back() {
-    return this.dataStore[this.tail];
+    return this.dataStore[this.tail - 1];
   }
 
   //toString() function displays all the elements in a queue
   toString() {
     return this.dataStore.toString();
+  }
+
+  size() {
+    return this.tail - this.head;
   }
 
   //empty()function lets us know if a queue is empty
@@ -36,3 +43,14 @@ class Queue {
     return false;
   }
 }
+
+var q = new Queue();
+q.enqueue('Meredith');
+q.enqueue('Cynthia');
+q.enqueue('Jennifer');
+console.log(q.toString());
+q.dequeue();
+console.log(q.toString());
+console.log('Front of queue: ' + q.front());
+console.log('Back of queue: ' + q.back());
+console.log('size of queue ', q.size());
