@@ -37,10 +37,17 @@ class Queue {
   }
 
   //empty()function lets us know if a queue is empty
-  empty() {
+  isEmpty() {
     if (this.tail - this.head <= 0) return true;
 
     return false;
+  }
+
+  //clear() function clears the queue
+  clear() {
+    this.dataStore = [];
+    this.head = 0;
+    this.tail = 0;
   }
 }
 
