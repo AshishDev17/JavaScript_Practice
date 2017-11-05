@@ -15,9 +15,9 @@ class SinglyLinkedList {
     let current;
 
     if (after === undefined){
-      if (head === null) head = node;
-      else{
-        current = head;
+      if (this.head === null) this.head = node;
+      else {
+        current = this.head;
 
         while (current.next){
           current = current.next;
@@ -26,5 +26,17 @@ class SinglyLinkedList {
         current.next = node;
       }
     }
+
+
+  }
+
+  find(element) {
+    let currentNode = this.head;
+
+    while (currentNode.element !== element){
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
   }
 }
