@@ -10,11 +10,14 @@ class SinglyLinkedList {
     this.head = null;
   }
 
-  insert(element, after) {
-    const node = new Node(element);
+  /*insert function accepts two arguments, first one is 'element' that is inserted in the linked list
+  and other is 'item' (if given), after which 'element' is inserted in the linked list. If 'item' is not
+  given then 'element' will be inserted in the end pf the linked list*/
+  insert(newElement, item) {
+    const node = new Node(newElement);
     let current;
 
-    if (after === undefined){
+    if (item === undefined){
       if (this.head === null) this.head = node;
       else {
         current = this.head;
@@ -26,14 +29,36 @@ class SinglyLinkedList {
         current.next = node;
       }
     }
+    else {
+      let insertAfter = find(item);
 
-
+      if (insertAfter !== null){
+        node.next = insertAfter.next;
+        insertAfter.next = node;
+      }
+    }
   }
 
-  find(element) {
+  //remove() function accepts an argument 'item', and removes the node whose element is equal to item
+
+
+  //find() function accepts an argument 'element', and returns node whose element is equal to 'element'
+  find(item) {
     let currentNode = this.head;
 
-    while (currentNode.element !== element){
+    while (currentNode.element !== item){
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
+  }
+
+  //findPrevious() function accepts an argument 'item', and returns node that exists previous to the node
+  //whose element is equal to 'item'
+  findPrevious(item) {
+    let currentNode = this.head;
+
+    while (currentNode.next !== null && currentNode.next.element !== item){
       currentNode = currentNode.next;
     }
 
