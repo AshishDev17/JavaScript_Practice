@@ -45,6 +45,11 @@ class Queue {
   clear() {
     this.dataStore = [];
   }
+
+  //print() function prints the queue to console
+  print() {
+    console.log(this.dataStore.toString());
+  }
 }
 
 
