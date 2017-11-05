@@ -48,6 +48,16 @@ class SinglyLinkedList {
     }
   }
 
+  //contains() function accepts an argument 'item', and returns true if any node in the linked list contains
+  //an element whose value is equal to 'item'
+  contains(item) {
+    let node = find(item);
+
+    if(node.element === item) return true;
+
+    return false;
+  }
+
   //find() function accepts an argument 'element', and returns node whose element is equal to 'element'
   find(item) {
     let currentNode = this.head;
