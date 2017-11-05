@@ -40,7 +40,13 @@ class SinglyLinkedList {
   }
 
   //remove() function accepts an argument 'item', and removes the node whose element is equal to item
+  remove(item) {
+    let previousNode = findPrevious(item);
 
+    if (previousNode.next !== null){
+      previousNode.next = previousNode.next.next;
+    }
+  }
 
   //find() function accepts an argument 'element', and returns node whose element is equal to 'element'
   find(item) {
