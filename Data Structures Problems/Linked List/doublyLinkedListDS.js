@@ -106,11 +106,9 @@ class DoublyLinkedList {
     return false;
   }
 
-  //removeFirst() or removeHead() function removes the first Node or Head of LL
+  //removeFirst() or removeHead() function removes the first Node or Head of LL and returns true if removed otherwise returns false
   removeFirst() {
     if (this.head !== null) {
-      const element = this.head.element;
-
       if (this.head.next === null) {
         this.head = null;
         this.tail = null;
@@ -122,15 +120,15 @@ class DoublyLinkedList {
         this.head = newHead;
       }
 
-      return element;
+      return true;
     }
+
+    return false;
   }
 
-  //removeLast() or removeTail() function removes the last Node or Tail of LL
+  //removeLast() or removeTail() function removes the last Node or Tail of LL and returns true if removed otherwise returns false
   removeLast() {
     if (this.tail !== null) {
-      const element = this.tail.element;
-
       if (this.tail.previous === null) {
         this.head = null;
         this.tail = null;
@@ -143,7 +141,46 @@ class DoublyLinkedList {
         this.tail = newTail;
       }
 
-      return element;
+      return true;
     }
+
+    return false;
+  }
+
+  //remove() function accepts an argument 'item' and removes the node whose element is equal to 'item', if removed return
+  //true otherwise returns false;
+  remove(item) {
+    let nodeToBeRemoved = find(item);
+
+    if (nodeToBeRemoved !== null) {
+      if (nodeToBeRemoved === this.head && nodeToBeRemoved === this.tail) {
+        this.head = null;
+        this.tail = null;
+      }
+      else if (nodeToBeRemoved === this.head) {
+        let newHead = this.head.next;
+        this.head.next.previous = null;
+        this.head.next = null;
+        this.head = newHead;
+      }
+      else if (nodeToBeRemoved === this.tail) {
+        let newTail = this.tail.previous;
+        this.tail.previous.next = null;
+        this.tail.previous = null;
+        this.tail = newTail;
+      }
+      else {
+        let nodeBefore = nodeToBeRemoved.previous;
+        let nodeAfter = nodeToBeRemoved.next;
+        nodeBefore.next = nodeAfter;
+        nodeAfter.previous = nodeBefore;
+        nodeToBeRemoved.next = null;
+        nodeToBeRemoved.previous = null;
+      }
+
+      return true;
+    }
+
+    return false;
   }
 }
