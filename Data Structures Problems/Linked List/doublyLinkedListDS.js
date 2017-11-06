@@ -108,6 +108,21 @@ class DoublyLinkedList {
 
   //removeFirst() or removeHead() function removes the first Node or Head of LL
   removeFirst() {
+    if (this.head !== null) {
+      const element = this.head.element;
 
+      if (this.head.next === null) {
+        this.head = null;
+        this.tail = null;
+      }
+      else {
+        let newHead = this.head.next;
+        this.head.next.previous = null;
+        this.head.next = null;
+        this.head = newHead;
+      }
+
+      return element;
+    }
   }
 }
