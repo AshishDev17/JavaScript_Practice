@@ -58,6 +58,16 @@ class SinglyLinkedList {
     return false;
   }
 
+  //display() function display the element of each node
+  display() {
+    let currentNode = this.head;
+
+    while (currentNode.next !== null){
+      console.log('Node element ', currentNode.element);
+      currentNode = currentNode.next;
+    }
+  }
+
   //find() function accepts an argument 'element', and returns node whose element is equal to 'element'
   find(item) {
     let currentNode = this.head;
