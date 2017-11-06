@@ -24,7 +24,28 @@ class DoublyLinkedList {
     return null;
   }
 
-  //addFirst() or addToHead() function accepts an argument 'element', and add node of value equal to element at the head of LL
+  //add() function accepts an argument 'element', and adds node with the element property in LL
+  add(element) {
+    let node = new Node(element);
+
+    if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+    }
+    else {
+      let currentNode = this.head;
+
+      while (currentNode !== null) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = node;
+      node.previous = currentNode;
+      this.tail = node;
+    }
+  }
+
+  //addFirst() or addToHead() function accepts an argument 'element', and add node with property element at the head of LL
   addFirst(element) {
     let node = new Node(element);
 
@@ -195,5 +216,15 @@ class DoublyLinkedList {
     }
 
     return count;
+  }
+
+  //display() function display the element of each node
+  display() {
+    let currentNode = this.head;
+
+    while (currentNode !== null){
+      console.log('Node element = ', currentNode.element);
+      currentNode = currentNode.next;
+    }
   }
 }
