@@ -183,4 +183,17 @@ class DoublyLinkedList {
 
     return false;
   }
+
+  //count() function returns number of nodes in the LL
+  count() {
+    let currentNode = this.head;
+    let count = 0;
+
+    while (currentNode !== null) {
+      ++count;
+      currentNode = currentNode.next;
+    }
+
+    return count;
+  }
 }
