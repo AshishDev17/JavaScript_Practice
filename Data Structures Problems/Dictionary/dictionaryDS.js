@@ -45,4 +45,26 @@ class Dictionary {
   clear() {
     this.dataStore = {};
   }
+
+  //keys() function returns all the keys of entries in Dictionary
+  keys() {
+    const keys = [];
+
+    for(let key in this.dataStore) {
+      keys.push(key);
+    }
+
+    return keys;
+  }
+
+  //values() function returns all the values of entries in Dictionary
+  values() {
+    const values = [];
+
+    for(let key in this.dataStore) {
+      values.push(this.dataStore[key]);
+    }
+
+    return values;
+  }
 }
