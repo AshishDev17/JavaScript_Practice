@@ -35,7 +35,7 @@ class DoublyLinkedList {
     else {
       let currentNode = this.head;
 
-      while (currentNode !== null) {
+      while (currentNode.next) {
         currentNode = currentNode.next;
       }
 
@@ -80,7 +80,7 @@ class DoublyLinkedList {
   addBefore(newElement, item) {
     let node = new Node(newElement);
 
-    let addBeforeNode = this.find(item);
+    let addBeforeNode = this.findNode(item);
 
     if (addBeforeNode !== null) {
       if (addBeforeNode.previous !== null) {
@@ -171,7 +171,7 @@ class DoublyLinkedList {
   //remove() function accepts an argument 'item' and removes the node whose element is equal to 'item', if removed return
   //true otherwise returns false;
   remove(item) {
-    let nodeToBeRemoved = find(item);
+    let nodeToBeRemoved = this.findNode(item);
 
     if (nodeToBeRemoved !== null) {
       if (nodeToBeRemoved === this.head && nodeToBeRemoved === this.tail) {
@@ -228,3 +228,55 @@ class DoublyLinkedList {
     }
   }
 }
+
+
+var cities = new DoublyLinkedList();
+console.log('------Testing add() function------');
+cities.add('Conway');
+cities.add('Russellville');
+cities.display();
+console.log();
+console.log('------Testing addFirst() function------');
+cities.addFirst('Rachel');
+cities.display();
+console.log();
+console.log('------Testing addLast() function------');
+cities.addLast('Mike');
+cities.display();
+console.log();
+console.log('------Testing addBefore() function------');
+cities.addBefore('Shelly', 'Mike');
+cities.display();
+console.log();
+console.log('------Testing addAfter() function------');
+cities.addAfter('Jane', 'Mike');
+cities.display();
+console.log();
+console.log('------Testing add() function------');
+cities.add('John');
+cities.add('Collin');
+cities.display();
+console.log('------Testing addBefore() function------');
+cities.addBefore('Nick', 'Rachel');
+cities.display();
+console.log();
+console.log('------Testing addAfter() function------');
+cities.addAfter('Willy', 'Rachel');
+cities.display();
+console.log();
+console.log('------Testing removeFirst() function------');
+cities.removeFirst();
+cities.display();
+console.log();
+console.log('------Testing removeLast() function------');
+cities.removeLast();
+cities.display();
+console.log();
+console.log('------Testing remove() function------');
+console.log(`cities.remove('Willy') returns `, cities.remove('Willy'));
+cities.display();
+console.log('------Testing remove() function------');
+console.log(`cities.remove('Jena') returns `, cities.remove('Jena'));
+cities.display();
+console.log('------Testing count() function------');
+console.log(`number of nodes in cities linked list `, cities.count());
