@@ -18,4 +18,19 @@ class Dictionary {
   has(key) {
     return this.dataStore.hasOwnProperty(key);
   }
+
+  //remove() or delete() function accepts one argument 'key', and returns true if removed otherwise returns returns false
+  remove(key) {
+    if (this.has(key)) {
+      delete this.dataStore[key];
+      return true;
+    }
+
+    return false;
+  }
+
+  //count() or size() function returns number of entries in the Dictionary
+  count() {
+    return Object.keys(this.dataStore).length;
+  }
 }
