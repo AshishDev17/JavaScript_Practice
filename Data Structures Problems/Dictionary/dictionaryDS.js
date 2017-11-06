@@ -33,4 +33,16 @@ class Dictionary {
   count() {
     return Object.keys(this.dataStore).length;
   }
+
+  //sortedShowall() or sortedDisplay() function displays all entries of the Distionary
+  sortedDisplay() {
+    for (let key in Object.keys(this.dataStore).sort()) {
+      console.log(key, ' - ', this.dataStore[key]);
+    }
+  }
+
+  //clear() function clear all entries in the dictionary
+  clear() {
+    this.dataStore = {};
+  }
 }
