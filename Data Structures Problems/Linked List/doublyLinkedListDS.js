@@ -125,4 +125,25 @@ class DoublyLinkedList {
       return element;
     }
   }
+
+  //removeLast() or removeTail() function removes the last Node or Tail of LL
+  removeLast() {
+    if (this.tail !== null) {
+      const element = this.tail.element;
+
+      if (this.tail.previous === null) {
+        this.head = null;
+        this.tail = null;
+      }
+      else {
+        let newTail = this.tail.previous;
+
+        this.tail.previous.next = null;
+        this.tail.previous = null;
+        this.tail = newTail;
+      }
+
+      return element;
+    }
+  }
 }
