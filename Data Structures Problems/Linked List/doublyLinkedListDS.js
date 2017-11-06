@@ -53,4 +53,61 @@ class DoublyLinkedList {
 
     this.tail = node;
   }
+
+  //addBefore() function accepts two arguments, first argument is 'newElement' that is added to LL, and second is 'item' before which
+  //'newElement' is added in LL
+  addBefore(newElement, item) {
+    let node = new Node(newElement);
+
+    let addBeforeNode = this.find(item);
+
+    if (addBeforeNode !== null) {
+      if (addBeforeNode.previous !== null) {
+        addBeforeNode.previous.next = node;
+        node.previous = addBeforeNode.previous;
+        node.next = addBeforeNode;
+        addBeforeNode.previous = node;
+      }
+      else {
+        node.next = addBeforeNode;
+        addBeforeNode.previous = node;
+        this.head = node;
+      }
+
+      return true;
+    }
+
+    return false;
+  }
+
+  //addAfter() function accepts two arguments, first argument is 'newElement' that is added to LL, and second is 'item' after which
+  //'newElement' is added in LL
+  addAfter(newElement, item) {
+    let node = new Node(newElement);
+
+    let addAfterNode = this.findNode(item);
+
+    if (addAfterNode !== null ) {
+      if (addAfterNode.next !== null) {
+        addAfterNode.next.previous = node;
+        node.next = addAfterNode.next;
+        addAfterNode.next = node;
+        node.previous = addAfterNode;
+      }
+      else {
+        addAfterNode.next = node;
+        node.previous = addAfterNode;
+        this.tail = node;
+      }
+
+      return true;
+    }
+
+    return false;
+  }
+
+  //removeFirst() or removeHead() function removes the first Node or Head of LL
+  removeFirst() {
+
+  }
 }
