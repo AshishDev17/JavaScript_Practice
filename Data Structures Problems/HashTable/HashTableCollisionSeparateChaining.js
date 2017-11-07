@@ -34,7 +34,21 @@ class HashTable {
   //set() or put() accepts two arguments, first argument is 'key' and second argument is 'value'
   //and adds the node with key and value to the respective bucket
   set(key, value) {
+    const index = this.hash(key);
 
+    if (!this.bucket[index]) {
+      this.bucket[index] = new LinkedList();
+    }
+
+    const node = this.searchNodeWithKey(this.bucket[index], key);
+
+    if (node) {
+      node.element.value = value;
+    }
+    else {
+      const struct = new Struct(key, value);
+      this.bucket[index].addToTail(struct);
+    }
   }
 
   //searchNodeWithKey() accepts an argument 'key', and if node is present in the hashtable with that 'key'
