@@ -229,6 +229,7 @@ class DoublyLinkedList {
   }
 }
 
+module.exports = DoublyLinkedList;
 
 var cities = new DoublyLinkedList();
 console.log('------Testing add() function------');
