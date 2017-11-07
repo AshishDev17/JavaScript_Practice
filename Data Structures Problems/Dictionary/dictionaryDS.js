@@ -36,8 +36,9 @@ class Dictionary {
 
   //sortedShowall() or sortedDisplay() function displays all entries of the Distionary
   sortedDisplay() {
-    for (let key in Object.keys(this.dataStore).sort()) {
-      console.log(key, ' - ', this.dataStore[key]);
+    const sortedKeys = Object.keys(this.dataStore).sort();
+    for (let key in sortedKeys) {
+      console.log(sortedKeys[key], ' - ', this.dataStore[sortedKeys[key]]);
     }
   }
 
@@ -68,3 +69,33 @@ class Dictionary {
     return values;
   }
 }
+
+
+
+var names = new Dictionary();
+console.log('------Testing add() function------');
+names.add('Guest2', 'Russell');
+names.add('Guest1', 'Conway');
+names.sortedDisplay();
+console.log();
+console.log('------Testing get() function------');
+console.log('Guest1 - ', names.get('Guest1'));
+console.log();
+console.log('------Testing has() function------');
+console.log('Dictionary names has key Guest1 - ', names.has('Guest1'));
+console.log('Dictionary names has key Guest3 - ', names.has('Guest3'));
+console.log();
+console.log('------Testing count() function------');
+console.log('Dictionary names has number of ', names.count(), ' entries.');
+console.log();
+console.log('------Testing keys() function------');
+console.log('Dictionary names has these keys ', names.keys());
+console.log();
+console.log('------Testing values() function------');
+console.log('Dictionary names has these values ', names.values());
+console.log();
+console.log('------Testing remove() function------');
+console.log('remove("Guest1") returns ', names.remove('Guest1'));
+console.log('     --Dictionary entries--   ')
+names.sortedDisplay();
+console.log();
