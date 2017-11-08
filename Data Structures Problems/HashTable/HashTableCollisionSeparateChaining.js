@@ -47,9 +47,20 @@ class HashTable {
     }
     else {
       const struct = new Struct(key, value);
-      this.bucket[index].addToTail(struct);
+      this.bucket[index].add(struct);
     }
   }
+
+  //get() function accepts an argument 'key', and returns the value
+  get(key) {
+    const index = this.hash(key);
+    if (!this.bucket[index]) return null;
+
+    const node = this.searchNodeWithKey(this.bucket[index], key);
+
+    if (node) return node.element.value;
+  }
+
 
   //searchNodeWithKey() accepts an argument 'key', and if node is present in the hashtable with that 'key'
   //then returns it, otherwise returns null
@@ -63,4 +74,5 @@ class HashTable {
 
     return null;
   }
+
 }
