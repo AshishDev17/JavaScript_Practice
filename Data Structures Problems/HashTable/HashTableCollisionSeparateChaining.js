@@ -61,6 +61,40 @@ class HashTable {
     if (node) return node.element.value;
   }
 
+  //remove() function accepts an argument 'key' , returns true if remove the entry otherwise return false
+  remove(key) {
+    const index = this.hash(key);
+
+    if (!this.bucket[index]) return false;
+
+    const node = this.searchNodeWithKey(this.bucket[index], key);
+
+    if (node) {
+      this.bucket[index].remove(node.element);
+      return true;
+    }
+
+    return false;
+  }
+
+  //hasKey() function accepts an argument 'key', and returns true if Hash Table has entry whose element's key
+  //property is equal to 'key'
+  hasKey(key) {
+    const index = this.hash(key);
+
+    if (!this.bucket[index]) return false;
+
+    const node = this.searchNodeWithKey(this.bucket[index], key);
+
+    return !!node;
+  }
+
+  //dsiplayHashTable() function displays the entries of Hash Table on the console.log
+  displayHashTable() {
+    for (let i = 0; i < this.numOfBuckets; i++) {
+      console.log('Bucket ' + ( i + 1) + ' - ' + this.bucket[i].display());
+    }
+  }
 
   //searchNodeWithKey() accepts an argument 'key', and if node is present in the hashtable with that 'key'
   //then returns it, otherwise returns null
