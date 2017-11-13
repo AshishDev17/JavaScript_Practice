@@ -326,11 +326,20 @@ class HashTable {
   //dsiplayHashTable() function displays the entries of Hash Table on the console.log
   displayHashTable() {
     for (let i = 0; i < this.numOfBuckets; i++) {
+      console.log('Bucket ' + ( i + 1));
+
       if (this.bucket[i]) {
-        console.log('Bucket ' + ( i + 1));
-        this.bucket[i].display();
-        console.log()
+        if (this.bucket[i].count() > 0) {
+          this.bucket[i].display();
+        }
+        else {
+          console.log('Bucket assigned but empty')
+        }
       }
+      else {
+        console.log('Bucket not assigned!');
+      }
+      console.log()
     }
   }
 
@@ -372,3 +381,7 @@ console.log('------Testing hasKey() function----');
 console.log(`Hash table has key 'Gandalf'? `, hTable.hasKey('Gandalf'));
 console.log(`Hash table has key 'Micahel'? `, hTable.hasKey('Michael'));
 console.log();
+console.log('------Testing remove() function----');
+console.log(`Remove key 'Gandalf'? `, hTable.remove('Gandalf'));
+console.log(`Remove key 'Micahel'? `, hTable.remove('Michael'));
+hTable.displayHashTable();
