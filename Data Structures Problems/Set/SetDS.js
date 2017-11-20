@@ -31,5 +31,16 @@ class Set {
     return false;
   }
 
+  //clear() function clear everything in the set
+  clear() {
+    this.store = {};
+  }
+
+  //size() function returns the number of members of the set
+  size() {
+    return Object.keys(this.store).length;
+  }
+
+
 
 }
