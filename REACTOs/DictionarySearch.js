@@ -14,10 +14,20 @@ const dictionary = [
   Approach 1 - Naive Approach
 */
 
+//using for loop
+// const definitionOf = (word, dict) => {
+//   for (let i = 0; i < dict.length; i++) {
+//     if (dict[i].startsWith(word + ' - ')) {
+//       return dict[i].slice(word.length + 3);
+//     }
+//   }
+// };
+
+//using find() method
 const definitionOf = (word, dict) => {
-  for (let i = 0; i < dict.length; i++) {
-    if (dict[i].startsWith(word + ' - ')) {
-      return dict[i].slice(word.length + 3);
-    }
+  const definition = dict.find(entry => entry.startsWith(word + ' - '));
+
+  if (definition) {
+    return definition.slice(word.length + 3);
   }
 };
