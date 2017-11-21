@@ -67,7 +67,7 @@ class Set {
   //intersection() function accepts an argument 'otherSet', and returns a new set obtained by adding all the members of one set that also exist in a second set
   intersection(otherSet) {
     const intersectionSet = new Set();
-    const values = this.values;
+    const values = this.values();
 
     for (let i = 0; i < values.length; i++) {
       if (otherSet.has(values[i])) {
@@ -77,4 +77,20 @@ class Set {
 
     return intersectionSet;
   }
+
+  //difference() function accepts an argument 'otherSet', and returns a new set obtained by adding all the members of one set except those that also exist in a second set
+  difference(otherSet) {
+    const differenceSet = new Set();
+
+    const values = this.values();
+
+    for (let i = 0; i < values.length; i++) {
+      if (!otherSet.has(values[i])) {
+        differenceSet.add(values[i]);
+      }
+    }
+
+    return differenceSet;
+  }
 }
+
