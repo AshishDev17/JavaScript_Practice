@@ -41,6 +41,27 @@ class Set {
     return Object.keys(this.store).length;
   }
 
+  //value() function returns all members of the set
+  values() {
+   return Object.values(this.store);
+  }
 
+  //union() function accepts an argument 'otherSet', and returns a new set obtained by combining the members of one set with the members of another set
+  union(otherSet) {
+    const unionSet = new Set();
+    let values = this.values();
+
+    for (let i = 0; i < values.length; i++) {
+      unionSet.add(values[i]);
+    }
+
+    values = otherSet.values();
+
+    for (let j = 0; j < values.length; j++) {
+      unionSet.add(values[j]);
+    }
+
+    return unionSet;
+  }
 
 }
