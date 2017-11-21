@@ -92,5 +92,20 @@ class Set {
 
     return differenceSet;
   }
+
+  //subSet() function accepts an argument 'otherSet', and returns true if 'otherSet' is a subset of set, otherwise returns false
+  subSet(otherSet) {
+    if (otherSet.size() < this.size()) return false;
+
+    const values = this.values();
+
+    for (let i = 0; i < values.length; i++) {
+      if (!otherSet.has(values[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
 
