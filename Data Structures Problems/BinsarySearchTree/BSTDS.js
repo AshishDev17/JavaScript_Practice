@@ -30,7 +30,7 @@ class BST {
         node.left = newNode;
       }
       else {
-        insertNode(node.left, newNode);
+        this.insertNode(node.left, newNode);
       }
     }
     else {
@@ -38,9 +38,37 @@ class BST {
         node.right = newNode;
       }
       else {
-        insertNode(node.right, newNode);
+        this.insertNode(node.right, newNode);
       }
     }
   }
 
+  //inOrderTraverse() function takes an argument 'callBack', and executes that 'callBack' function on each key of the BST in a 'InOrder' traversal order
+  inOrderTraverse(callBack) {
+    this.inOrderTraverseNode(this.root, callBack);
+  }
+
+  //inOrderTraverseNode() function accepts two arguments, first argument is 'node' which is current node in the BST, and second argument is 'callBack' function
+  inOrderTraverseNode(node, callBack) {
+    if (node) {
+      this.inOrderTraverseNode(node.left, callBack);
+      callBack(node.key);
+      this.inOrderTraverseNode(node.right, callBack);
+    }
+  }
 }
+
+const printBST = (key) => {
+  console.log(key);
+}
+
+var nums = new BST();
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
+nums.insert(22);
+console.log('-------InOrder Traversal--------');
+nums.inOrderTraverse(printBST);
