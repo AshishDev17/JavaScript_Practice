@@ -43,17 +43,19 @@ class BST {
     }
   }
 
-  //inOrderTraverse() function takes an argument 'callBack', and executes that 'callBack' function on each key of the BST in a 'InOrder' traversal order
-  inOrderTraverse(callBack) {
-    this.inOrderTraverseNode(this.root, callBack);
+  //orderTraverse() function takes two arguments, first argument is  'callback' function, and second argument is 'order' which is the order of traversing BST
+  depthFirstTraverse(callback, order) {
+    this.traverseNode(this.root, callback, order);
   }
 
-  //inOrderTraverseNode() function accepts two arguments, first argument is 'node' which is current node in the BST, and second argument is 'callBack' function
-  inOrderTraverseNode(node, callBack) {
+  //traverseNode() function accepts three arguments, first argument is 'node' which is current node in the BST, second argument is 'callback' function, and third argument is 'order' which is the order of traversing BST
+  traverseNode(node, callback, order) {
     if (node) {
-      this.inOrderTraverseNode(node.left, callBack);
-      callBack(node.key);
-      this.inOrderTraverseNode(node.right, callBack);
+      if (order === 'preOrder') callback(node.key);
+      this.traverseNode(node.left, callback, order);
+      if (order === 'inOrder') callback(node.key);
+      this.traverseNode(node.right, callback, order);
+      if (order === 'postOrder') callback(node.key);
     }
   }
 }
@@ -71,4 +73,8 @@ nums.insert(3);
 nums.insert(99);
 nums.insert(22);
 console.log('-------InOrder Traversal--------');
-nums.inOrderTraverse(printBST);
+nums.depthFirstTraverse(printBST, 'inOrder');
+console.log('-------PreOrder Traversal--------');
+nums.depthFirstTraverse(printBST, 'preOrder');
+console.log('-------PostOrder Traversal--------');
+nums.depthFirstTraverse(printBST, 'postOrder');
