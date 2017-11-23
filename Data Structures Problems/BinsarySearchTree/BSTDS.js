@@ -9,10 +9,12 @@ class Node {
 class BST {
   constructor() {
     this.root = null;
+    this.length = 0;
   }
 
   //insert() function accepts an argument, 'key', and insert that key in the binary tree
   insert(key) {
+    this.length++;
     const node = new Node(key);
 
     if (!this.root) {
@@ -101,6 +103,18 @@ class BST {
       }
     }
   }
+
+  //size() function returns the number of nodes in BST
+  size() {
+    return this.length;
+  }
+
+  //getRoot() function returns root of BST
+  getRoot() {
+    return this.root;
+  }
+
+
 }
 
 const printBST = (key) => {
