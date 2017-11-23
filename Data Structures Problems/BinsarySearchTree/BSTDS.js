@@ -130,6 +130,23 @@ class BST {
       }
     }
   }
+
+  //max() function returns the key of the node that has maximum value of the key in BST
+  max() {
+    return this.maxNode(this.root);
+  }
+
+  //maxNode() is a helper function that accepts an argument 'node', and returns the key of the node that has maximum value of the key in BST
+  maxNode(node) {
+     if (node) {
+      if (!node.right) {
+        return node.key;
+      }
+      else {
+        return this.maxNode(node.right);
+      }
+    }
+  }
 }
 
 const printBST = (key) => {
