@@ -23,7 +23,7 @@ class BST {
     }
   }
 
-  //insertNode() functiin accepts two arguments, first argument is 'node' existed in BST, and second asrgument is 'newNode' that needs to be inserted in the BST
+  //insertNode() is a helper functiin that accepts two arguments, first argument is 'node' existed in BST, and second asrgument is 'newNode' that needs to be inserted in the BST
   insertNode(node, newNode) {
     if (newNode.key < node.key) {
       if (!node.left) {
@@ -48,7 +48,7 @@ class BST {
     this.traverseNode(this.root, callback, order);
   }
 
-  //traverseNode() function accepts three arguments, first argument is 'node' which is current node in the BST, second argument is 'callback' function, and third argument is 'order' which is the order of traversing BST
+  //traverseNode() is a helper function that accepts three arguments, first argument is 'node' which is current node in the BST, second argument is 'callback' function, and third argument is 'order' which is the order of traversing BST
   traverseNode(node, callback, order) {
     if (node) {
       if (order === 'preOrder') callback(node.key);
@@ -70,6 +70,35 @@ class BST {
 
       if (node.left) arr.push(node.left);
       if (node.right) arr.push(node.right);
+    }
+  }
+
+  //contains() or search() function accepts an argument 'key', and return true if BST contains any node with key equals to 'key', otherwise returns false
+  search(key) {
+   return this.searchNode(this.root, key);
+  }
+
+  //serachNode() is a helper function that accepts two arguments, first argument is 'node' which is a current node of BST, and second argument is 'key' that needs to be searched in BST
+  searchNode(node, key) {
+    if (node.key === key) {
+      return true;
+    }
+
+    if (key < node.key) {
+      if (!node.left){
+        return false;
+      }
+      else {
+        return this.searchNode(node.left, key);
+      }
+    }
+    else {
+      if(!node.right) {
+        return false;
+      }
+      else{
+        return this.searchNode(node.right, key);
+      }
     }
   }
 }
@@ -94,3 +123,6 @@ console.log('-------PostOrder Traversal--------');
 nums.depthFirstTraverse(printBST, 'postOrder');
 console.log('-------BreadthFirst Traversal--------');
 nums.breadthFirstTraverse(printBST);
+console.log('-------Test search() function--------');
+console.log('nums.search(3) returns ', nums.search(3));
+console.log('nums.search(46) returns ', nums.search(46));
