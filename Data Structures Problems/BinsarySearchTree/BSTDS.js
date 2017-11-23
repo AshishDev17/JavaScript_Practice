@@ -26,7 +26,7 @@ class BST {
   //insertNode() functiin accepts two arguments, first argument is 'node' existed in BST, and second asrgument is 'newNode' that needs to be inserted in the BST
   insertNode(node, newNode) {
     if (newNode.key < node.key) {
-      if(!node.left) {
+      if (!node.left) {
         node.left = newNode;
       }
       else {
@@ -43,7 +43,7 @@ class BST {
     }
   }
 
-  //orderTraverse() function takes two arguments, first argument is  'callback' function, and second argument is 'order' which is the order of traversing BST
+  //depthFirstTraversee() function takes two arguments, first argument is  'callback' function, and second argument is 'order' which is the order of traversing BST
   depthFirstTraverse(callback, order) {
     this.traverseNode(this.root, callback, order);
   }
@@ -56,6 +56,20 @@ class BST {
       if (order === 'inOrder') callback(node.key);
       this.traverseNode(node.right, callback, order);
       if (order === 'postOrder') callback(node.key);
+    }
+  }
+
+  //breadthFirstTraverse() function accepts an argument 'callback' and travserses BST in breadth first order
+  breadthFirstTraverse(callback) {
+    const arr = [this.root];
+    let node;
+
+    while (arr.length > 0) {
+      node = arr.shift();
+      callback(node.key);
+
+      if (node.left) arr.push(node.left);
+      if (node.right) arr.push(node.right);
     }
   }
 }
@@ -78,3 +92,5 @@ console.log('-------PreOrder Traversal--------');
 nums.depthFirstTraverse(printBST, 'preOrder');
 console.log('-------PostOrder Traversal--------');
 nums.depthFirstTraverse(printBST, 'postOrder');
+console.log('-------BreadthFirst Traversal--------');
+nums.breadthFirstTraverse(printBST);
