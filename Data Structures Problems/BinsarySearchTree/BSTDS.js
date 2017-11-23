@@ -114,7 +114,22 @@ class BST {
     return this.root;
   }
 
+  //min() function returns the key of the node that has minimum value of the key in BST
+  min() {
+    return this.minNode(this.root);
+  }
 
+  //minNode() is a helper function that accepts an argument 'node', and returns the key of the node that has minimum value of the key in BST
+  minNode(node) {
+     if (node) {
+      if (!node.left) {
+        return node.key;
+      }
+      else {
+        return this.minNode(node.left);
+      }
+    }
+  }
 }
 
 const printBST = (key) => {
@@ -140,3 +155,5 @@ nums.breadthFirstTraverse(printBST);
 console.log('-------Test search() function--------');
 console.log('nums.search(3) returns ', nums.search(3));
 console.log('nums.search(46) returns ', nums.search(46));
+console.log('-------Test min() function--------');
+console.log('minimum key in BST is ', nums.min());
