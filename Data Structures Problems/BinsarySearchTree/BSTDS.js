@@ -174,3 +174,5 @@ console.log('nums.search(3) returns ', nums.search(3));
 console.log('nums.search(46) returns ', nums.search(46));
 console.log('-------Test min() function--------');
 console.log('minimum key in BST is ', nums.min());
+console.log('-------Test max() function--------');
+console.log('maximum key in BST is ', nums.max());
