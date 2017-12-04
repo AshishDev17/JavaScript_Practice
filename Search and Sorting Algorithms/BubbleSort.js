@@ -8,7 +8,7 @@ const swap = (array, index1, index2) =>{
 
 const bubbleSort = (arr) => {
   for (let i = 0; i < arr.length; i++) {
-    console.log('Step ', i);
+    console.log('Step ', i + 1);
     for (let j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
